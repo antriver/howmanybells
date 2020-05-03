@@ -1,0 +1,3 @@
+[submodule "animal-crossing-scraper"]
+	path = animal-crossing-scraper
+	url = https://github.com/sungyeonu/animal-crossing-scraper
