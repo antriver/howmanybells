@@ -14,6 +14,11 @@ class DataManager
         return json_decode(file_get_contents($this->getCombinedJsonPath()));
     }
 
+    public function getAlexaSlotValuesCsvPath(): string
+    {
+        return storage_path().'/alexa-slot-values.csv';
+    }
+
     public function getJsonPath(string $filename): string
     {
         return __DIR__.'/../../animal-crossing-scraper/data/'.$filename.'.json';
@@ -23,6 +28,7 @@ class DataManager
     {
         $path = $this->getJsonPath($filename);
         $contents = file_get_contents($path);
+
         return json_decode($contents);
     }
 
@@ -46,6 +52,6 @@ class DataManager
 
     public static function sanitizeName(string $name): string
     {
-        return ucwords(strtolower($name));
+        return preg_replace('/[^a-zA-Z0-9]+/', '', strtolower($name));
     }
 }
