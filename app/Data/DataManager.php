@@ -35,6 +35,12 @@ class DataManager
             return $allItems->{$name};
         }
 
+        // Try with no spaces.
+        $name = str_replace(' ', '', $name);
+        if (!empty($allItems->{$name})) {
+            return $allItems->{$name};
+        }
+
         return null;
     }
 
