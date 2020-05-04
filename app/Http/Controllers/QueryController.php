@@ -25,14 +25,14 @@ class QueryController extends Controller
             return "Sorry, I couldn't find any info about a \"".htmlentities($q)."\".";
         }
 
-        $response = "A {$item->name} is worth {$item->price} bells";
+        $response = "A {$item->name} is worth ".number_format($item->price)." bells";
 
         if ($item->type === ItemTypeEnum::FISH) {
             $cjPrice = $item->price * 1.5;
-            $response .= ", or {$cjPrice} bells if you sell it to C.J.";
+            $response .= ", or ".number_format($cjPrice)." bells if you sell it to C.J.";
         } elseif ($item->type === ItemTypeEnum::BUG) {
             $flickPrice = $item->price * 1.5;
-            $response .= ", or {$flickPrice} bells if you sell it to Flick";
+            $response .= ", or ".number_format($flickPrice)." bells if you sell it to Flick";
         }
 
         $response .= ".";

@@ -2,6 +2,8 @@
 
 namespace App\Data;
 
+use Doctrine\Common\Inflector\Inflector;
+
 class DataManager
 {
     public function getCombinedJsonPath(): string
@@ -38,7 +40,8 @@ class DataManager
 
         $searches = [
             $name,
-            rtrim($name, 's') // Remove 's' at the end
+            rtrim($name, 's'), // Remove 's' at the end
+            Inflector::singularize($name),
         ];
 
         foreach ($searches as $q) {
