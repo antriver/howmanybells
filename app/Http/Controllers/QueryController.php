@@ -29,10 +29,10 @@ class QueryController extends Controller
 
         if ($item->type === ItemTypeEnum::FISH) {
             $cjPrice = $item->price * 1.5;
-            $response .= ", or {$cjPrice} bells if sold to C.J.";
+            $response .= ", or {$cjPrice} bells if you sell it to C.J.";
         } elseif ($item->type === ItemTypeEnum::BUG) {
             $flickPrice = $item->price * 1.5;
-            $response .= ", or {$flickPrice} bells if sold to Flick";
+            $response .= ", or {$flickPrice} bells if you sell it to Flick";
         }
 
         $response .= ".";
