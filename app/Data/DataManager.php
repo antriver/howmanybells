@@ -34,15 +34,28 @@ class DataManager
 
     public function findItem(string $name): ?object
     {
-        $name = self::sanitizeName($name);
         $allItems = $this->getCombinedItems();
 
-        if (!empty($allItems->{$name})) {
-            return $allItems->{$name};
+        $searches = [
+            $name,
+            rtrim($name, 's') // Remove 's' at the end
+        ];
+
+        foreach ($searches as $q) {
+            $q = self::sanitizeName($q);
+
+            if (!empty($allItems->{$q})) {
+                return $allItems->{$q};
+            }
         }
 
-        // Try with no spaces.
-        $name = str_replace(' ', '', $name);
+        return null;
+    }
+
+    private function getItem(string $name): ?object
+    {
+        $allItems = $this->getCombinedItems();
+
         if (!empty($allItems->{$name})) {
             return $allItems->{$name};
         }

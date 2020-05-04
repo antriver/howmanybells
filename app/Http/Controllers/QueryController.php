@@ -32,7 +32,7 @@ class QueryController extends Controller
             $response .= ", or {$cjPrice} bells if sold to C.J.";
         } elseif ($item->type === ItemTypeEnum::BUG) {
             $flickPrice = $item->price * 1.5;
-            $response .= ", or {$flickPrice} bells if sold to Flick.";
+            $response .= ", or {$flickPrice} bells if sold to Flick";
         }
 
         $response .= ".";
