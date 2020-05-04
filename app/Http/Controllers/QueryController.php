@@ -22,7 +22,7 @@ class QueryController extends Controller
         $item = $dataManager->findItem($q);
 
         if (empty($item)) {
-            return "Sorry, I couldn't find any info about a ".htmlentities($q).".";
+            return "Sorry, I couldn't find any info about a \"".htmlentities($q)."\".";
         }
 
         $response = "A {$item->name} is worth {$item->price} bells";
