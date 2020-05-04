@@ -22,20 +22,21 @@ class QueryController extends Controller
         $item = $dataManager->findItem($q);
 
         if (empty($item)) {
-            echo "Sorry, I couldn't find that item.";
-            return;
+            return "Sorry, I couldn't find any info about a ".htmlentities($q).".";
         }
 
-        echo "A {$item->name} is worth {$item->price} bells.";
+        $response = "A {$item->name} is worth {$item->price} bells";
 
         if ($item->type === ItemTypeEnum::FISH) {
             $cjPrice = $item->price * 1.5;
-            echo " Or {$cjPrice} bells if sold to C.J.";
+            $response .= ", or {$cjPrice} bells if sold to C.J.";
         } elseif ($item->type === ItemTypeEnum::BUG) {
             $flickPrice = $item->price * 1.5;
-            echo " Or {$flickPrice} bells if sold to Flick.";
+            $response .= ", or {$flickPrice} bells if sold to Flick.";
         }
 
-        return;
+        $response .= ".";
+
+        return $response;
     }
 }
