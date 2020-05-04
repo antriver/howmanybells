@@ -15,4 +15,4 @@
 |
 */
 
-$router->get('/query', 'QueryController@query');
+$router->get('/', 'QueryController@query');
