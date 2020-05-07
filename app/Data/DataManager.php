@@ -38,10 +38,15 @@ class DataManager
     {
         $allItems = $this->getCombinedItems();
 
+        $stripped = preg_replace("/^(a|an|are)\s/", '', $name); // Remove 'are' at the start which Alexa likes to add
+        $stripped =  preg_replace("/\s(as)$/", '', $stripped);
+
         $searches = [
             $name,
             rtrim($name, 's'), // Remove 's' at the end
             Inflector::singularize($name),
+            $stripped,
+            Inflector::singularize($stripped),
         ];
 
         foreach ($searches as $q) {
