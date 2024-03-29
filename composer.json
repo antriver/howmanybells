@@ -6,8 +6,8 @@
     "type": "project",
     "require": {
         "ext-json": "*",
-        "doctrine/inflector": "^1.3",
-        "laravel/lumen-framework": "^8.0"
+        "doctrine/inflector": "^2.0",
+        "laravel/lumen-framework": "^9.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.9.1",
