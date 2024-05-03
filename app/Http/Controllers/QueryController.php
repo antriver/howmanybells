@@ -15,7 +15,11 @@ class QueryController extends Controller
         DataManager $dataManager,
         QueryLogger $logger
     ) {
-        $q = $request->input('q');
+        $q = $request->input('q', '');
+
+        if (empty($q)) {
+            return "Sorry, I didn't recognise that.";
+        }
 
         $logger->info($q);
 
